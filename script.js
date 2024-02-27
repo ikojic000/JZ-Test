@@ -113,15 +113,13 @@ $(document).ready(function () {
         return;
       }
 
-      // Check if Backspace key is pressed
-      $(".person:last-child").remove(); // Remove the last person
+      $(".person:last-child").remove();
     }
   });
 
   // Event listener for the Delete key
   $(document).on("keydown", function (event) {
     if (event.which === 46) {
-      // Trigger click event for #clearAll when Delete key is pressed
       $("#clearAll").trigger("click");
     }
   });
