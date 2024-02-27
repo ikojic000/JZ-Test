@@ -11,6 +11,9 @@ $(document).ready(function () {
     $("#personInputs").append(
       '<div class="person"><input type="text" class="name" placeholder="Name"><input type="number" class="score" placeholder="Koeficijent"><button class="removePerson">X</button></div>'
     );
+
+    // Set focus to the name input of the newly created .person
+    $(".person:last-child .name").focus();
   });
 
   $("#clearAll").click(function () {
