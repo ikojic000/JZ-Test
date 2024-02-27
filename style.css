@@ -55,12 +55,13 @@ body {
     rgba(44, 79, 74, 1) 35%,
     rgba(46, 191, 165, 1) 100%
   );
+  background-attachment: fixed;
 }
 
 .wrapper {
   width: max-content;
   /* background-color: blue; */
-  margin: 2rem auto 2rem auto;
+  margin: 2rem auto 200px auto;
 }
 
 .wrapper h1 {
@@ -96,8 +97,9 @@ body {
 }
 
 .card:last-of-type {
+  display: none;
   margin-top: 2rem;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
@@ -216,4 +218,16 @@ body {
 .card-team ol li {
   font-size: 1.1rem;
   margin: 1rem 0;
+}
+
+.footer {
+  background-color: var(--secondary-color);
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  color: var(--white-font-color);
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
