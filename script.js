@@ -105,9 +105,16 @@ $(document).ready(function () {
     }
   });
 
+  $(document).on("keydown", function (event) {
+    // Check if Ctrl key and Enter key are pressed simultaneously
+    if (event.ctrlKey && event.key === "Enter") {
+      $("#balanceTeams").trigger("click");
+    }
+  });
+
   // Event listener for Backspace key
   $(document).keydown(function (e) {
-    if (e.which === 8) {
+    if (e.which === 8 && !$("input:focus").length) {
       if ($(".person").length === 1) {
         alert("Ne možete maknuti posljednju osobu.");
         return;
@@ -121,6 +128,26 @@ $(document).ready(function () {
   $(document).on("keydown", function (event) {
     if (event.which === 46) {
       $("#clearAll").trigger("click");
+    }
+  });
+
+  const stringList = [
+    "jz",
+    "zrile",
+    "josip",
+    "zrilic",
+    "zrilić",
+    "josip zrilic",
+    "josip zrilić",
+    "zrilic josip",
+    "zrilić josip",
+  ];
+
+  // Event listener for name input field
+  $(document).on("input", ".name", function () {
+    let enteredName = $(this).val().trim().toLowerCase();
+    if (stringList.includes(enteredName)) {
+      $(this).val(enteredName + " homoseksualac");
     }
   });
 });
