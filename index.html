@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balanser timova</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Balanser timova</h1>
+      <div class="card">
+        <h2>Unesite imena igrača i njihove koeficijente</h2>
+        <div class="single-button-wrapper">
+          <button id="clearAll">Izbriši sve</button>
+        </div>
+        <div id="inputForm">
+          <div class="person-inputs" id="personInputs">
+            <div class="person">
+              <input type="text" class="name" placeholder="Ime igrača" />
+              <input type="number" class="score" placeholder="Koeficijent" />
+              <button class="removePerson">X</button>
+            </div>
+          </div>
+          <div class="single-button-wrapper">
+            <button id="addPerson">Dodaj igrača</button>
+          </div>
+
+          <div class="single-button-wrapper">
+            <button id="balanceTeams">Podijeli u timove</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-team">
+          <h2>Tim 1</h2>
+          <ol id="team1"></ol>
+        </div>
+        <div class="card-team">
+          <h2>Tim 2</h2>
+          <ol id="team2"></ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
