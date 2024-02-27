@@ -212,3 +212,8 @@ body {
 .removePerson:active {
   background-color: var(--danger-color-active);
 }
+
+.card-team ol li {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
