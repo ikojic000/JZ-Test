@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Function to add a person input
   function addPersonInput() {
     if ($(".person").length === peopleCount) {
-      alert("Ne možete dodati više od " + peopleCount + " ljudi.");
+      showCustomAlert("Ne možete dodati više od " + peopleCount + " ljudi.", "danger");
       return;
     }
     $("#personInputs").append(
@@ -19,7 +19,7 @@ $(document).ready(function () {
   // Function to remove a person input
   function removePersonInput() {
     if ($(".person").length === 1) {
-      alert("Ne možete maknuti posljednju osobu.");
+      showCustomAlert("Ne možete maknuti posljednju osobu.", "danger");
       return;
     }
     $(".person:last-child").remove();
@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
 
     if (people.length !== peopleCount) {
-      alert("Molim unesite točno " + peopleCount + " ljudi!");
+      showCustomAlert("Molim unesite točno " + peopleCount + " ljudi!", "danger");
       return;
     }
 
@@ -105,6 +105,26 @@ $(document).ready(function () {
     );
 
     $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+
+    showCustomAlert("Timovi uspiješno izbalansirani", "success");
+  }
+
+  // Function to show a custom alert
+  function showCustomAlert(message, type) {
+    let alertDiv = $('<div class="custom-alert ' + type + '">' + message + '</div>');
+    $("#customAlertContainer").append(alertDiv);
+
+    // Call closeCustomAlert and pass the alertDiv
+    closeCustomAlert(alertDiv);
+  }
+
+  function closeCustomAlert(alertDiv) {
+    // Fade out and remove the alert after 5 seconds
+    setTimeout(function () {
+      alertDiv.fadeOut(500, function () {
+        $(this).remove();
+      });
+    }, 5 * 1000);
   }
 
   // Event listener for adding a person input

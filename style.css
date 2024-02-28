@@ -232,3 +232,43 @@ body {
   bottom: 0;
   left: 0;
 }
+
+.custom-alert {
+  color: var(--white-font-color);
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  padding: 16px;
+  padding-right: 64px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* margin-bottom: 2rem; */
+}
+
+.custom-alert .close {
+  position: absolute;
+  opacity: 0.5;
+  right: 16px;
+  top: calc(50% - 22px);
+  text-align: center;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.custom-alert.danger {
+  background-color: #bf272d;
+  border-left: 5px solid var(--danger-color-active);
+}
+
+.custom-alert.danger .close {
+  color: var(--danger-color-active);
+}
+
+.custom-alert.success {
+  background-color: var(--main-color);
+  border-left: 5px solid var(--secondary-color);
+}
+
+.custom-alert.success .close {
+  color: var(--secondary-color);
+}
