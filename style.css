@@ -150,6 +150,10 @@ body {
   justify-content: end;
 }
 
+.single-button-wrapper.center {
+  justify-content: start;
+}
+
 .single-button-wrapper:first-of-type {
   margin-top: 0;
 }
@@ -226,6 +230,11 @@ body {
 
 .removePerson:active {
   background-color: var(--danger-color-active);
+}
+
+.single-button-wrapper.center button {
+  background-color: transparent;
+  color: var(--darkgray-color);
 }
 
 .card-team ol li {

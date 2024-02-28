@@ -6,6 +6,7 @@ $(document).ready(function () {
   function personCountInput() {
     let count = $(".person-count input").val();
     peopleCount = parseInt(count);
+    teamCount = peopleCount / 2;
 
     if (peopleCount % 2 !== 0) {
       showCustomAlert("Broj igrača mora biti paran.", "danger");
@@ -21,7 +22,10 @@ $(document).ready(function () {
   // Function to add a person input
   function addPersonInput() {
     if ($(".person").length === peopleCount) {
-      showCustomAlert("Ne možete dodati više od " + peopleCount + " ljudi.", "danger");
+      showCustomAlert(
+        "Ne možete dodati više od " + peopleCount + " ljudi.",
+        "danger"
+      );
       return;
     }
     $("#personInputs").append(
@@ -59,7 +63,10 @@ $(document).ready(function () {
     });
 
     if (people.length !== peopleCount) {
-      showCustomAlert("Molim unesite točno " + peopleCount + " ljudi!", "danger");
+      showCustomAlert(
+        "Molim unesite točno " + peopleCount + " ljudi!",
+        "danger"
+      );
       return;
     }
 
@@ -126,7 +133,9 @@ $(document).ready(function () {
 
   // Function to show a custom alert
   function showCustomAlert(message, type) {
-    let alertDiv = $('<div class="custom-alert ' + type + '">' + message + '</div>');
+    let alertDiv = $(
+      '<div class="custom-alert ' + type + '">' + message + "</div>"
+    );
     $("#customAlertContainer").append(alertDiv);
 
     // Call closeCustomAlert and pass the alertDiv
@@ -145,6 +154,15 @@ $(document).ready(function () {
   // Event listener for setting player count
   $("#personCount").click(personCountInput);
 
+  // Event listener for setting new player count
+  $("#changePlayerCount").click(function () {
+    clearAllPersonInputs();
+    $(".player-count-card").css("display", "block");
+    $(".card-wrapper").css("display", "none");
+    $(".card-team").parent().css("display", "none");
+    $(".person-count input").focus().select(); // Set focus and select text inside input
+  });
+
   // Event listener for adding a person input
   $("#addPerson").click(addPersonInput);
 
@@ -160,30 +178,42 @@ $(document).ready(function () {
   // Event listener for Enter key press
   // Event listener for Enter key press
   $(document).keypress(function (event) {
-    if ($('.card-wrapper').css('display') === 'block' && event.which === 13) {
+    if ($(".card-wrapper").css("display") === "block" && event.which === 13) {
       addPersonInput();
-    } else if ($('.player-count-card').css('display') === 'block' && $('.card-wrapper').css('display') === 'none' && event.which === 13) {
+    } else if (
+      $(".player-count-card").css("display") === "block" &&
+      $(".card-wrapper").css("display") === "none" &&
+      event.which === 13
+    ) {
       personCountInput();
     }
   });
 
   // Event listener for Ctrl + Enter key press
   $(document).on("keydown", function (event) {
-    if ($('.card-wrapper').css('display') === 'block' && event.ctrlKey && event.key === "Enter") {
+    if (
+      $(".card-wrapper").css("display") === "block" &&
+      event.ctrlKey &&
+      event.key === "Enter"
+    ) {
       balanceTeams();
     }
   });
 
   // Event listener for Backspace key
   $(document).keydown(function (e) {
-    if ($('.card-wrapper').css('display') === 'block' && e.which === 8 && !$("input:focus").length) {
+    if (
+      $(".card-wrapper").css("display") === "block" &&
+      e.which === 8 &&
+      !$("input:focus").length
+    ) {
       removePersonInput();
     }
   });
 
   // Event listener for the Delete key
   $(document).on("keydown", function (event) {
-    if ($('.card-wrapper').css('display') === 'block' && event.which === 46) {
+    if ($(".card-wrapper").css("display") === "block" && event.which === 46) {
       clearAllPersonInputs();
     }
   });
@@ -198,18 +228,17 @@ $(document).ready(function () {
     "josip zrilić",
     "zrilic josip",
     "zrilić josip",
-    "joso"
+    "joso",
   ];
 
   // Event listener for name input field
   $(document).on("input", ".name", function () {
-    if ($('.card-wrapper').css('display') === 'block') {
+    if ($(".card-wrapper").css("display") === "block") {
       let enteredName = $(this).val().trim().toLowerCase();
       if (stringList.includes(enteredName)) {
         $(this).val(enteredName + " homoseksualac");
+        showCustomAlert("MAX PEDER", "gay");
       }
-      showCustomAlert("MAX PEDER", "gay")
     }
   });
-
 });
