@@ -3,7 +3,8 @@ $(document).ready(function () {
   const teamCount = peopleCount / 2;
   let people = [];
 
-  $("#addPerson").click(function () {
+  // Function to add a person input
+  function addPersonInput() {
     if ($(".person").length === peopleCount) {
       alert("Ne možete dodati više od " + peopleCount + " ljudi.");
       return;
@@ -13,24 +14,26 @@ $(document).ready(function () {
     );
 
     $(".person:last-child .name").focus();
-  });
+  }
 
-  $("#clearAll").click(function () {
-    $("#personInputs").empty();
-    $(".card-team").parent().css("display", "none");
-    $("#addPerson").trigger("click");
-  });
-
-  $(document).on("click", ".removePerson", function () {
+  // Function to remove a person input
+  function removePersonInput() {
     if ($(".person").length === 1) {
       alert("Ne možete maknuti posljednju osobu.");
       return;
     }
+    $(".person:last-child").remove();
+  }
 
-    $(this).parent().remove();
-  });
+  // Function to clear all person inputs
+  function clearAllPersonInputs() {
+    $("#personInputs").empty();
+    $(".card-team").parent().css("display", "none");
+    addPersonInput();
+  }
 
-  $("#balanceTeams").click(function () {
+  // Function to handle team balancing
+  function balanceTeams() {
     people = [];
     $(".person").each(function () {
       let name = $(this).find(".name").val();
@@ -81,53 +84,66 @@ $(document).ready(function () {
 
     displayTeam("team1", bestTeam1);
     displayTeam("team2", bestTeam2);
-  });
+  }
 
+  // Function to display a team
   function displayTeam(teamId, team) {
     $(".card-team").parent().css("display", "grid");
     $("#" + teamId).empty();
+
     let totalScore = 0;
+
     team.forEach(function (person) {
       $("#" + teamId).append(
         "<li>" + person.name + " - " + person.score + "</li>"
       );
       totalScore += person.score;
     });
+
     $("#" + teamId).append(
-      "<li>Ukupan koeficijent: " + totalScore.toFixed(2) + "</li>"
+      "<p>Ukupan koeficijent: " + totalScore.toFixed(2) + "</p>"
     );
+
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
   }
+
+  // Event listener for adding a person input
+  $("#addPerson").click(addPersonInput);
+
+  // Event listener for clearing all person inputs
+  $("#clearAll").click(clearAllPersonInputs);
+
+  // Event listener for removing a person input
+  $(document).on("click", ".removePerson", removePersonInput);
+
+  // Event listener for balancing teams
+  $("#balanceTeams").click(balanceTeams);
 
   // Event listener for Enter key press
   $(document).keypress(function (event) {
     if (event.which === 13) {
-      $("#addPerson").trigger("click");
+      addPersonInput();
     }
   });
 
   // Event listener for Ctrl + Enter key press
   $(document).on("keydown", function (event) {
     if (event.ctrlKey && event.key === "Enter") {
-      $("#balanceTeams").trigger("click");
+      balanceTeams();
     }
   });
 
   // Event listener for Backspace key
   $(document).keydown(function (e) {
     if (e.which === 8 && !$("input:focus").length) {
-      if ($(".person").length === 1) {
-        alert("Ne možete maknuti posljednju osobu.");
-        return;
-      }
-
-      $(".person:last-child").remove();
+      removePersonInput();
     }
   });
 
   // Event listener for the Delete key
   $(document).on("keydown", function (event) {
     if (event.which === 46) {
-      $("#clearAll").trigger("click");
+      clearAllPersonInputs();
     }
   });
 
