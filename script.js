@@ -1,7 +1,22 @@
 $(document).ready(function () {
-  const peopleCount = 10;
-  const teamCount = peopleCount / 2;
+  let peopleCount = 10;
+  let teamCount = peopleCount / 2;
   let people = [];
+
+  function personCountInput() {
+    let count = $(".person-count input").val();
+    peopleCount = parseInt(count);
+
+    if (peopleCount % 2 !== 0) {
+      showCustomAlert("Broj igrača mora biti paran.", "danger");
+      return;
+    }
+
+    showCustomAlert("Broj igrača uspiješno dodijeljen.", "success");
+
+    $(".player-count-card").css("display", "none");
+    $(".card-wrapper").css("display", "block");
+  }
 
   // Function to add a person input
   function addPersonInput() {
@@ -127,6 +142,9 @@ $(document).ready(function () {
     }, 5 * 1000);
   }
 
+  // Event listener for setting player count
+  $("#personCount").click(personCountInput);
+
   // Event listener for adding a person input
   $("#addPerson").click(addPersonInput);
 
@@ -140,29 +158,32 @@ $(document).ready(function () {
   $("#balanceTeams").click(balanceTeams);
 
   // Event listener for Enter key press
+  // Event listener for Enter key press
   $(document).keypress(function (event) {
-    if (event.which === 13) {
+    if ($('.card-wrapper').css('display') === 'block' && event.which === 13) {
       addPersonInput();
+    } else if ($('.player-count-card').css('display') === 'block' && $('.card-wrapper').css('display') === 'none' && event.which === 13) {
+      personCountInput();
     }
   });
 
   // Event listener for Ctrl + Enter key press
   $(document).on("keydown", function (event) {
-    if (event.ctrlKey && event.key === "Enter") {
+    if ($('.card-wrapper').css('display') === 'block' && event.ctrlKey && event.key === "Enter") {
       balanceTeams();
     }
   });
 
   // Event listener for Backspace key
   $(document).keydown(function (e) {
-    if (e.which === 8 && !$("input:focus").length) {
+    if ($('.card-wrapper').css('display') === 'block' && e.which === 8 && !$("input:focus").length) {
       removePersonInput();
     }
   });
 
   // Event listener for the Delete key
   $(document).on("keydown", function (event) {
-    if (event.which === 46) {
+    if ($('.card-wrapper').css('display') === 'block' && event.which === 46) {
       clearAllPersonInputs();
     }
   });
@@ -182,9 +203,13 @@ $(document).ready(function () {
 
   // Event listener for name input field
   $(document).on("input", ".name", function () {
-    let enteredName = $(this).val().trim().toLowerCase();
-    if (stringList.includes(enteredName)) {
-      $(this).val(enteredName + " homoseksualac");
+    if ($('.card-wrapper').css('display') === 'block') {
+      let enteredName = $(this).val().trim().toLowerCase();
+      if (stringList.includes(enteredName)) {
+        $(this).val(enteredName + " homoseksualac");
+      }
+      showCustomAlert("MAX PEDER", "gay")
     }
   });
+
 });

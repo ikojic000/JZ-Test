@@ -100,20 +100,30 @@ body {
   grid-row-gap: 0px;
 }
 
+.card-wrapper {
+  display: none;
+}
+
 .person-inputs {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.person-inputs .person {
+.person-inputs .person,
+.person-count-input .person-count {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
+.person-count-input .person-count {
+  gap: 2rem;
+}
+
 .person-inputs .person .name,
-.person-inputs .person .score {
+.person-inputs .person .score,
+.person-count-input .person-count .count {
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: 1px solid var(--darkgray-color);
@@ -125,7 +135,10 @@ body {
 .person-inputs .person .name:active,
 .person-inputs .person .score:active,
 .person-inputs .person .name:focus,
-.person-inputs .person .score:focus {
+.person-inputs .person .score:focus,
+.person-count-input .person-count .count:hover,
+.person-count-input .person-count .count:active,
+.person-count-input .person-count .count:focus {
   outline: none;
   border: 1px solid var(--main-color);
   box-shadow: var(--drop-shadow);
@@ -146,7 +159,8 @@ body {
 }
 
 .single-button-wrapper button,
-.removePerson {
+.removePerson,
+.person-count-input .person-count .confirm {
   padding: 8px 16px;
   border-radius: 10px;
   outline: none;
@@ -156,11 +170,13 @@ body {
   cursor: pointer;
 }
 
-.single-button-wrapper button:hover {
+.single-button-wrapper button:hover,
+.person-count-input .person-count .confirm:hover {
   background-color: var(--secondary-color-hover);
 }
 
-.single-button-wrapper button:active {
+.single-button-wrapper button:active,
+.person-count-input .person-count .confirm:active {
   background-color: var(--secondary-color-active);
 }
 
@@ -169,7 +185,10 @@ body {
 .single-button-wrapper button:focus,
 .removePerson:hover,
 .removePerson:active,
-.removePerson:focus {
+.removePerson:focus,
+.person-count-input .person-count .confirm:hover,
+.person-count-input .person-count .confirm:active,
+.person-count-input .person-count .confirm:focus {
   box-shadow: var(--drop-shadow);
 }
 
@@ -270,5 +289,23 @@ body {
 }
 
 .custom-alert.success .close {
+  color: var(--secondary-color);
+}
+
+.custom-alert.gay {
+  background: linear-gradient(
+    red 16.66%,
+    orange 0 33.33%,
+    yellow 0 50%,
+    green 0 66.66%,
+    blue 0 83.33%,
+    indigo 0
+  );
+  border-left: 5px solid var(--secondary-color);
+  color: var(--bs-dark);
+  font-size: 1.5rem;
+}
+
+.custom-alert.gay .close {
   color: var(--secondary-color);
 }
