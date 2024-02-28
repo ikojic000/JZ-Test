@@ -238,6 +238,16 @@ $(document).ready(function () {
       if (stringList.includes(enteredName)) {
         $(this).val(enteredName + " homoseksualac");
         showCustomAlert("MAX PEDER", "gay");
+
+        // Add firework elements
+        $("#firework").html(
+          '<div class="firework"></div><div class="firework"></div><div class="firework"></div>'
+        );
+
+        // Remove firework elements after 5 seconds
+        setTimeout(function () {
+          $("#firework").empty();
+        }, 5000);
       }
     }
   });
