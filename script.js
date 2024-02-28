@@ -12,7 +12,6 @@ $(document).ready(function () {
       '<div class="person"><input type="text" class="name" placeholder="Name"><input type="number" class="score" placeholder="Koeficijent"><button class="removePerson">X</button></div>'
     );
 
-    // Set focus to the name input of the newly created .person
     $(".person:last-child .name").focus();
   });
 
@@ -46,7 +45,6 @@ $(document).ready(function () {
       return;
     }
 
-    // Sort people by score in descending order
     people.sort((a, b) => b.score - a.score);
 
     let bestTeam1 = [];
@@ -81,7 +79,6 @@ $(document).ready(function () {
     // Start recursive function to find the best teams
     findBestTeams([], [], 0);
 
-    // Display teams
     displayTeam("team1", bestTeam1);
     displayTeam("team2", bestTeam2);
   });
@@ -108,8 +105,8 @@ $(document).ready(function () {
     }
   });
 
+  // Event listener for Ctrl + Enter key press
   $(document).on("keydown", function (event) {
-    // Check if Ctrl key and Enter key are pressed simultaneously
     if (event.ctrlKey && event.key === "Enter") {
       $("#balanceTeams").trigger("click");
     }
@@ -144,6 +141,7 @@ $(document).ready(function () {
     "josip zrilić",
     "zrilic josip",
     "zrilić josip",
+    "joso"
   ];
 
   // Event listener for name input field
