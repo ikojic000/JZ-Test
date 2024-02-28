@@ -2,26 +2,23 @@
 
 :root {
   --main-color: #2ebfa5;
+
   --secondary-color: #2c4f4a;
   --secondary-color-hover: #284843;
   --secondary-color-active: #233f3b;
+
   --danger-color: #851b1f;
   --danger-color-hover: #7e1a1d;
   --danger-color-active: #78181c;
-  --white-background-color: rgb(247, 247, 247);
 
   --darkgray-color: #58595b;
   --darkgray-color-hover: #4f5052;
   --darkgray-color-active: #464749;
-  --lightgray-color: #dedede;
-  --lightgray-color-hover: #d3d3d3;
-  --lightgray-color-active: #c8c8c8;
+
+  --white-background-color: rgb(247, 247, 247);
   --white-font-color: rgb(239, 239, 239);
-  --always-white-font-color: rgb(239, 239, 239);
 
   --bs-dark: rgb(0, 0, 0) !important;
-  --bs-white: rgb(255, 255, 255) !important;
-  --text-muted-color: #6c757d;
 
   --drop-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
@@ -55,12 +52,12 @@ body {
     rgba(44, 79, 74, 1) 35%,
     rgba(46, 191, 165, 1) 100%
   );
+
   background-attachment: fixed;
 }
 
 .wrapper {
   width: max-content;
-  /* background-color: blue; */
   margin: 2rem auto 200px auto;
 }
 
@@ -73,7 +70,6 @@ body {
 }
 
 .card {
-  /* background-color: red; */
   width: 100%;
   padding: 2rem;
   background-color: var(--white-background-color);
@@ -88,7 +84,6 @@ body {
 }
 
 .card:first-of-type {
-  /* background-color: green; */
   margin-bottom: 2rem;
 }
 
@@ -99,7 +94,6 @@ body {
 .card:last-of-type {
   display: none;
   margin-top: 2rem;
-  /* display: grid; */
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
@@ -220,10 +214,17 @@ body {
   margin: 1rem 0;
 }
 
+.card-team ol p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.05ch;
+  margin: 1rem 0;
+}
+
 .footer {
   background-color: var(--secondary-color);
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   color: var(--white-font-color);
   font-size: 1rem;
