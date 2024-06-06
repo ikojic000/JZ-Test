@@ -52,10 +52,10 @@
 			circle,
 			var(--color1) var(--particleSize),
 			#0000 0
-	) 50% 0%,
+	) 50% 0,
 	radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
 	radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
-	radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+	radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0 50%,
 		/* bottom right */ radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
 	radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
 	radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
